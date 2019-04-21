@@ -14,10 +14,23 @@ def encrypt(s, e, n):
     return(out)
     
 def modde(m, dee, en):
-    M = m
-    for i in range(0,dee -1):
-        M = (M*m)%en
-    return M
+    x = str(bin(dee)).lstrip("0b")
+    x = x[::-1]
+    b = []
+    for i in range(0, len(x)):
+        b.append(int(x[i]))
+    sq = [m]
+    for i in range(1, len(x)):
+        sq.append((sq[i-1]**2)%en)
+    cu = 1
+    for i in range(0,len(x)):
+        if b[i] == 1:
+            cu = (cu*sq[i])%en
+        
+    #M = m
+    #for i in range(0,dee -1):
+    #    M = (M*m)%en
+    return cu
 
 a = True
 
