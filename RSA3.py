@@ -23,23 +23,25 @@ def mod(n, a):
 
 c = 2
 t = 116
-
 def primer(t, C):
     new = []
     while C<100*t:
         prime = True
         k = 0
+        sq = C**0.5
         while k<len(primes):
             if C%primes[k] == 0:
                 prime = False
             k+=1
+            if k>sq:
+                break
         if prime:
             primes.append(C)
             new.append(C)
             if C>11358:
                 bprimes.append(C)
         C+=1
-    return (c, new)
+    return (C, new)
 	
 c, ignore = primer(t,c)
 
@@ -114,10 +116,23 @@ print("Enter \"values\" to see the values of n and e again or \"quit\" to termin
 
 
 def modde(m, dee, en):
-    M = m
-    for i in range(0,dee -1):
-        M = (M*m)%en
-    return M
+    x = str(bin(dee)).lstrip("0b")
+    x = x[::-1]
+    b = []
+    for i in range(0, len(x)):
+        b.append(int(x[i]))
+    sq = [m]
+    for i in range(1, len(x)):
+        sq.append((sq[i-1]**2)%en)
+    cu = 1
+    for i in range(0,len(x)):
+        if b[i] == 1:
+            cu = (cu*sq[i])%en
+        
+    #M = m
+    #for i in range(0,dee -1):
+    #    M = (M*m)%en
+    return cu
 
 
 
