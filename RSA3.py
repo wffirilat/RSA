@@ -23,25 +23,25 @@ def mod(n, a):
     return inv % A
 
 
-def primer(t, C):
+def primer(t, c):
     new = []
-    while C < 100 * t:
+    while c < 100 * t:
         prime = True
         k = 0
-        sq = C ** 0.5
+        sq = c ** 0.5
         while k < len(primes):
-            if C % primes[k] == 0:
+            if c % primes[k] == 0:
                 prime = False
             k += 1
             if k > sq:
                 break
         if prime:
-            primes.append(C)
-            new.append(C)
-            if C > 11358:
-                bprimes.append(C)
-        C += 1
-    return (C, new)
+            primes.append(c)
+            new.append(c)
+            if c > 11358:
+                bprimes.append(c)
+        c += 1
+    return c, new
 
 
 def modde(m, dee, en):
@@ -82,7 +82,6 @@ def main():
             c, new = primer(t, c)
             print(new)
         else:
-            B = False
             commands = command.split(" ")
             if len(commands) < 2:
                 print("Too few inputs.")
@@ -93,7 +92,7 @@ def main():
                     p = float(commands[0])
                     q = float(commands[1])
                     print("Please enter whole numbers.")
-                except:
+                except ValueError:
                     print("Please enter numbers or ask for more primes.")
             else:
                 p = int(commands[0])
@@ -135,10 +134,10 @@ def main():
     print("Ok, we'll just need one more number, your private key \"d\".")
     print("d is " + str(d) + ", the unique number less than " + str(
         phi) + " such that the remainder when its product with e is divided by " + str(phi) + " is 1.")
-    print(
-        "We've now established a valid RSA encryption system! Share e and n with your friends to allow them to encrypt messages to send to you, but make sure you keep d a secret!.")
-    print(
-        "The program will now decrypt encrypted ascii sequences structured as python lists of integers e.g. \"[1, 2, 3]\". Simply copy and paste one into the console to decrypt it.")
+    print("We've now established a valid RSA encryption system! Share e and n with your friends "
+          "to allow them to encrypt messages to send to you, but make sure you keep d a secret!.")
+    print("The program will now decrypt encrypted ascii sequences structured as python lists of "
+          "integers e.g. \"[1, 2, 3]\". Simply copy and paste one into the console to decrypt it.")
     print("Enter \"values\" to see the values of n and e again or \"quit\" to terminate the program.")
 
     vinp = False

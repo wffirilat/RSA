@@ -1,7 +1,6 @@
 def encrypt(s, e, n):
     out = []
-    while len(s) % 3 != 0:
-        s += "#"
+    s += "#" * (len(s) % 3)
     for i in range(0, int(len(s) / 3)):
         st = s[3 * i:3 * i + 3]
         a, b, c = str(ord(st[0])), str(ord(st[1])), str(ord(st[2]))
@@ -11,15 +10,13 @@ def encrypt(s, e, n):
             c = "0" + c
         k = int(a + b + c)
         out.append(modde(k, e, n))
-    return (out)
+    return out
 
 
 def modde(m, dee, en):
     x = str(bin(dee)).lstrip("0b")
     x = x[::-1]
-    b = []
-    for i in range(0, len(x)):
-        b.append(int(x[i]))
+    b = [int(i) for i in x]
     sq = [m]
     for i in range(1, len(x)):
         sq.append((sq[i - 1] ** 2) % en)
@@ -32,6 +29,7 @@ def modde(m, dee, en):
     # for i in range(0,dee -1):
     #    M = (M*m)%en
     return cu
+
 
 def main():
     a = True

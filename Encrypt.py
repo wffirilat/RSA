@@ -2,7 +2,7 @@ def encrypt(s, e, n):
     out = []
     for x in s:
         out.append(modde(ord(x), e, n))
-    return (out)
+    return out
 
 
 def modde(m, dee, en):
@@ -28,6 +28,7 @@ def main():
             E = input("Enter an e value: ")
         E = int(E)
         print(encrypt(kom, E, N))
+
 
 if __name__ == '__main__':
     main()
